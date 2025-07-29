@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大小周休息日助手</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- 头部标题 -->
+      <div class="header">
+        <h1>🗓️ 大小周休息日助手</h1>
+      </div>
+
+      <!-- 主要内容区域 - 左右布局 -->
+      <div class="main-content">
+        <!-- 左侧：日历区域 -->
+        <div class="calendar-section">
+          <div class="selected-date-info">
+            <div id="selectedDate">今天</div>
+            <div id="lunarDate" class="lunar-text">农历信息</div>
+          </div>
+
+          <div class="month-nav">
+            <button id="prevMonth">‹</button>
+            <span id="currentMonth"></span>
+            <button id="nextMonth">›</button>
+          </div>
+
+          <div class="calendar-grid" id="calendarGrid">
+            <!-- 周标题 -->
+            <div class="calendar-header">一</div>
+            <div class="calendar-header">二</div>
+            <div class="calendar-header">三</div>
+            <div class="calendar-header">四</div>
+            <div class="calendar-header">五</div>
+            <div class="calendar-header">六</div>
+            <div class="calendar-header">日</div>
+            <!-- 日历网格通过JavaScript生成 -->
+          </div>
+        </div>
+
+        <!-- 右侧：信息和设置区域 -->
+        <div class="info-section">
+          <!-- 简化描述 -->
+          <div class="brief-description">
+            <p>大小周：单休周和双休周</p>
+          </div>
+
+          <!-- 详细图例说明 -->
+          <div class="legend-section">
+            <h4>休息日说明</h4>
+            <div class="legend-item">
+              <div class="legend-icon single-rest-week"></div>
+              <div class="legend-detail">
+                <div class="legend-title">单休周（小周）</div>
+                <div class="legend-desc">周一到周六工作，仅周日休息</div>
+              </div>
+            </div>
+            <div class="legend-item">
+              <div class="legend-icon double-rest-week"></div>
+              <div class="legend-detail">
+                <div class="legend-title">双休周（大周）</div>
+                <div class="legend-desc">周一到周五工作，周六日休息</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 设置区域 -->
+          <div class="settings-section">
+            <h4>配置设置</h4>
+            <label for="firstSingleWeek">第一个单休周的周一：</label>
+            <input type="date" id="firstSingleWeek" />
+            <button id="saveSettings">保存设置</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 消息提示 -->
+    <div id="messageToast" class="message-toast hidden">
+      <span id="messageText"></span>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

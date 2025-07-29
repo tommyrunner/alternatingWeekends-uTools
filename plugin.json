@@ -1,0 +1,23 @@
+{
+  "pluginName": "大小周休息日助手",
+  "description": "智能显示大小周休息日安排，支持自定义配置和农历显示的效率工具",
+  "author": "Tommy Runner", 
+  "homepage": "https://github.com/tommyrunner/alternatingWeekends",
+  "version": "1.0.0",
+  "logo": "logo.png",
+  "platform": ["win32", "darwin", "linux"],
+  "main": "index.html",
+  "features": [
+    {
+      "code": "weekends",
+      "explain": "大小周休息日助手 - 查看大小周休息日安排",
+      "cmds": [
+        "大小周",
+        "休息日",
+        "工作日",
+        "日历",
+        "weekends"
+      ]
+    }
+  ]
+}

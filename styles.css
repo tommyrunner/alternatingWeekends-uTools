@@ -1,0 +1,479 @@
+/**
+ * 大小周休息日助手 - uTools插件样式 (左右布局版)
+ * @author Tommy Runner
+ * @version 1.0.0
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
+  width: 802px;
+  height: 542px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin: 0;
+  overflow: hidden;
+  height: 500px;
+  width: 680px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== 头部样式 ===== */
+.header {
+  background: linear-gradient(135deg, #4facfe 0%, #00c6ff 100%);
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shimmer 3s infinite;
+}
+
+.header h1 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== 主要内容区域 ===== */
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ===== 左侧：日历区域 ===== */
+.calendar-section {
+  flex: 1;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e9ecef;
+}
+
+.selected-date-info {
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 6px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+  flex-shrink: 0;
+}
+
+#selectedDate {
+  font-size: 16px;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 4px;
+}
+
+.lunar-text {
+  font-size: 12px;
+  color: #6c757d;
+  font-weight: normal;
+}
+
+.month-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.month-nav button {
+  background: #6c757d;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.month-nav button:hover {
+  background: #495057;
+}
+
+#currentMonth {
+  font-size: 16px;
+  font-weight: 600;
+  color: #495057;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  flex: 1;
+  margin-bottom: 8px;
+}
+
+.calendar-header {
+  background: #e9ecef;
+  padding: 6px 4px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6c757d;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  min-height: 28px;
+  border: 1px solid transparent;
+}
+
+.calendar-day:hover {
+  background: #e9ecef;
+  transform: scale(1.05);
+}
+
+.calendar-day.other-month {
+  color: #adb5bd;
+  background: #ffffff;
+}
+
+.calendar-day.today {
+  background: #ffc107;
+  color: #7b1fa2;
+  font-weight: 600;
+}
+
+.calendar-day.selected {
+  border: 1px solid #7b1fa2;
+  box-shadow: 0 0 0 1px #7b1fa2;
+}
+
+.calendar-day.single-rest-day {
+  background: #ff9800;
+  color: white;
+  font-weight: 600;
+}
+
+.calendar-day.single-rest-day::after {
+  content: "休";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 7px;
+  background: #f57c00;
+  border-radius: 2px;
+  padding: 1px 2px;
+  line-height: 1;
+}
+
+.calendar-day.double-rest-day {
+  background: #4caf50;
+  color: white;
+  font-weight: 600;
+}
+
+.calendar-day.double-rest-day::after {
+  content: "休";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 7px;
+  background: #2e7d32;
+  border-radius: 2px;
+  padding: 1px 2px;
+  line-height: 1;
+}
+
+.calendar-day.work-day {
+  background: #f8f9fa;
+  color: #495057;
+}
+
+/* ===== 右侧：信息区域 ===== */
+.info-section {
+  width: 250px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: #f8f9fa;
+}
+
+/* ===== 简化描述区域 ===== */
+.brief-description {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.brief-description p {
+  font-size: 12px;
+  color: #6c757d;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ===== 图例说明区域 ===== */
+.legend-section {
+  padding: 12px;
+  flex: 1;
+}
+
+.legend-section h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.legend-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.legend-icon.single-rest-week {
+  background: #ff9800;
+}
+
+.legend-icon.single-rest-week::after {
+  content: "休";
+  font-size: 12px;
+}
+
+.legend-icon.double-rest-week {
+  background: #4caf50;
+}
+
+.legend-icon.double-rest-week::after {
+  content: "休";
+  font-size: 12px;
+}
+
+.legend-detail {
+  flex: 1;
+}
+
+.legend-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.legend-desc {
+  font-size: 11px;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+/* ===== 设置区域 ===== */
+.settings-section {
+  padding: 12px;
+  background: #ffffff;
+  border-top: 1px solid #e9ecef;
+  flex-shrink: 0;
+}
+
+.settings-section h4 {
+  font-size: 12px;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.settings-section label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #495057;
+}
+
+.settings-section input[type="date"] {
+  width: 100%;
+  padding: 6px 8px;
+  border: 2px solid #dee2e6;
+  border-radius: 6px;
+  font-size: 11px;
+  margin-bottom: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.settings-section input[type="date"]:focus {
+  outline: none;
+  border-color: #4facfe;
+  box-shadow: 0 0 0 2px rgba(79, 172, 254, 0.1);
+}
+
+#saveSettings {
+  width: 100%;
+  padding: 8px;
+  background: #4facfe;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#saveSettings:hover {
+  background: #339af0;
+}
+
+/* ===== 消息提示 ===== */
+.message-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2d3748;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 14px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.message-toast.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-20px);
+  pointer-events: none;
+}
+
+.message-toast.success {
+  background: #48bb78;
+}
+
+.message-toast.error {
+  background: #f56565;
+}
+
+.message-toast.warning {
+  background: #ed8936;
+}
+
+/* ===== 动画效果 ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.calendar-day {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* ===== 滚动条样式 ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
