@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-一个专为中国职场人士设计的 uTools 插件，帮助您轻松管理和查看大小周休息日安排。无论您的公司采用何种大小周制度，这个插件都能帮您清晰地了解每周的休息安排。
+一个专为职场人士设计的 uTools 插件，帮助您轻松管理和查看大小周休息日安排。无论您的公司采用何种大小周制度，这个插件都能帮您清晰地了解每周的休息安排。
 
 ## ✨ 功能特性
 
@@ -27,7 +27,7 @@
 ### 方式二：开发者模式安装
 1. **下载插件**
    ```bash
-   git clone https://github.com/tommyrunner/alternatingWeekends-utools.git
+   git clone git@github.com:tommyrunner/alternatingWeekends-uTools.git
    cd alternatingWeekends-utools
    ```
 

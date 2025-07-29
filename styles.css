@@ -191,8 +191,7 @@ body::before {
 }
 
 .calendar-day.other-month {
-  color: #adb5bd;
-  background: #ffffff;
+    opacity: 0.5;
 }
 
 .calendar-day.today {
@@ -204,6 +203,23 @@ body::before {
 .calendar-day.selected {
   border: 1px solid #7b1fa2;
   box-shadow: 0 0 0 1px #7b1fa2;
+}
+
+/* 设置的第一个单休周日期样式 */
+.calendar-day.configured-date {
+  border: 1px solid #4facfe !important;
+  box-shadow: 0 0 0 1px #4facfe;
+}
+
+/* 设置日期的小标识 */
+.calendar-day.configured-date::before {
+  content: "●";
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  font-size: 8px;
+  color: #4facfe;
+  line-height: 1;
 }
 
 .calendar-day.single-rest-day {
@@ -456,8 +472,8 @@ body::before {
   }
 }
 
-.calendar-day {
-  animation: fadeIn 0.3s ease forwards;
+.calendar-day.fade-in {
+    animation: fadeIn 0.3s ease forwards;
 }
 
 /* ===== 滚动条样式 ===== */

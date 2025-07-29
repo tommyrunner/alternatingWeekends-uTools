@@ -3,7 +3,7 @@
   "description": "智能显示大小周休息日安排，支持自定义配置和农历显示的效率工具",
   "author": "Tommy Runner", 
   "homepage": "https://github.com/tommyrunner/alternatingWeekends",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "logo": "logo.png",
   "platform": ["win32", "darwin", "linux"],
   "main": "index.html",
